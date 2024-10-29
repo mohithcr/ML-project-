@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col">
+            <h1 class="text-center">Contact Us</h1>
+        </div>
+    </div>
+    <div class="row" id="">
+        <div class="">
+            <form method="post">
+                <div>
+                    <label for="txt1">Email address:</label>
+                    <input type="email" id="txt1" name="txt1" required>
+                </div>
+                <div>
+                    <label for="txt2">Phone:</label>
+                    <input type="tel" id="txt2" name="txt2" required>
+                </div>
+                <div>
+                    <label for="txt3">Website:</label>
+                    <input type="url" id="txt3" name="txt3" required>
+                </div>
+                <div>
+                    <label for="txt4">Message:</label>
+                    <textarea id="txt4" name="txt4" rows="4" required></textarea>
+                </div>
+                <div>
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Submit form</button>
+                </div>
+            </form>
+             
+        </div>
+    </div>
+</div>
+
+<style>
+    input, textarea{
+        width: 100% !important;
+    }
+    /* Style the button */
+    button[type="submit"] {
+        background-color: #007bff; /* Blue background color */
+        color: white; /* White text color */
+        padding: 10px 20px; /* Padding */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Cursor style */
+        transition: background-color 0.3s; /* Smooth transition for background color */
+    }
+
+    /* Change the background color of the button on hover */
+    button[type="submit"]:hover {
+        background-color: #0056b3; /* Darker blue color */
+    }
+</style>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+'use strict'
+
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+const forms = document.querySelectorAll('.needs-validation')
+
+// Loop over them and prevent submission
+Array.from(forms).forEach(form => {
+form.addEventListener('submit', event => {
+if (!form.checkValidity()) {
+event.preventDefault()
+event.stopPropagation()
+}
+
+form.classList.add('was-validated')
+}, false)
+})
+})()
+
+
+</script>
+{% endblock body %}
