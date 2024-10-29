@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="{% static 'img/sb-logo-small.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .btn-color {
+            background-color: #0e1c36;
+            color: #fff;
+
+        }
+
+        .profile-image-pic {
+            height: 200px;
+            width: 200px;
+            object-fit: cover;
+        }
+
+
+
+        .cardbody-color {
+            background-color: rgba(236, 236, 236, 0.493);
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center text-dark">Login Form</h2>
+                <div class="card">
+
+                    <form class="card-body cardbody-color p-lg-5" action="{% url 'login' %}" method="POST">
+
+                        <div class="text-center">
+                            <img src="data:image/jpeg;base64,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"
+                                class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px"
+                                alt="profile">
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="Username" aria-describedby="emailHelp"
+                                placeholder="User Name" name="login-txt1" id="login-txt1">
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="password" placeholder="password"
+                                name="login-txt2" id="login-txt2">
+                        </div>
+                        {% csrf_token %}
+                        <div class="text-center"><button type="submit"
+                                class="btn btn-color px-5 mb-5 w-100">Login</button></div>
+                        <div id="emailHelp" class="form-text text-center mb-5 text-dark">
+                            <p class="text-center mt-3">Admin <a href="/admin">login</a></p>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+
+</html>
