@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<div id="main">
+    <h1> PRECISION LIVER TUMOR SEGMENTATION</h1>
+    <div>
+        <div>
+            <form action="" method="post">
+                <div>
+                    <label for="txt1">Age of the patient:</label>
+                    <input name="txt1" type="number" id="txt1" step="0.001">
+                </div>
+                <div>
+                    <label for="txt2">Gender of the patient(1 Male, 0 Female):</label>
+                    <input name="txt2" type="number" id="txt2" step="0.001">
+                </div>
+                <div>
+                    <label for="txt3">Total Bilirubin:</label>
+                    <input name="txt3" type="number" id="txt3" step="0.001">
+                </div>
+                <div>
+                    <label for="txt4">Direct Bilirubin:</label>
+                    <input name="txt4" type="number" id="txt4" step="0.001">
+                </div>
+                <div>
+                    <label for="txt5">Alkphos Alkaline Phosphotase:</label>
+                    <input name="txt5" type="number" id="txt5" step="0.001">
+                </div>
+                <div>
+                    <label for="txt6">Sgpt Alamine Aminotransferase:</label>
+                    <input name="txt6" type="number" id="txt6" step="0.001">
+                </div>
+                <div>
+                    <label for="txt7">Sgot Aspartate Aminotransferase:</label>
+                    <input name="txt7" type="number" id="txt7" step="0.001">
+                </div>
+                <div>
+                    <label for="txt8">Total Protiens:</label>
+                    <input name="txt8" type="number" id="txt8" step="0.001">
+                </div>
+                <div>
+                    <label for="txt9">ALB Albumin:</label>
+                    <input name="txt9" type="number" id="txt9" step="0.001">
+                </div>
+                <div>
+                    <label for="txt10">A/G Ratio Albumin and Globulin Ratio:</label>
+                    <input name="txt10" type="number" id="txt10" step="0.001">
+                </div>
+                
+                <!-- Submit button -->
+                <button type="submit">Submit Now</button>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+    <div>
+        <h1>Prediction Results</h1>
+        {% if error %}
+        <p style="color: red;">Error: {{ error }}</p>
+        {% else %}
+            <p>Linear Regression Prediction: <b> {{ user_result1 }}</b></p>
+            <p>Random Forest Prediction: <b> {{ user_result2 }}</b></p>
+            <p>Cross Validation Prediction: <b> {{ user_result3 }}</b></p>
+            <p>Decision Tree Prediction: <b> {{ user_result4 }}</b></p>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    #main {
+        margin: 0 auto; /* Center horizontally */
+        width: 70%; /* Set width to 70% of the container */
+    }
+    /* Center all input boxes */
+    input[type="number"] {
+        margin: 0 auto; /* Center horizontally */
+        display: block; /* Ensure each input is on its own line */
+        width: 70%; /* Set width to 70% */
+    }
+    
+    /* Optional: Add some spacing between input boxes */
+    div > div {
+        margin-bottom: 10px;
+    }
+    
+    /* Style the submit button */
+button[type="submit"] {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+/* Change the background color of the button on hover */
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue color */
+}
+
+    
+</style>
+{% endblock body %}
